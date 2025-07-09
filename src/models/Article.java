@@ -45,7 +45,7 @@ public class Article {
     if (title != null && title.trim().length() > 2) {
         this.title = title;
     } else {
-        System.out.println("ERORR .....");
+        System.out.println("ERORR ... .");
     }
 }
  public void setContent(String content) {
