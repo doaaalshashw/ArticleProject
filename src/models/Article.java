@@ -10,16 +10,13 @@ package models;
  *
  * @author hp
  */
+
+
 public class Article {
- 
-
-
     private String title;
     private String content;
-    private String category;
+    public String category;
     private Date date;
-
-    // Constructor
     public Article(String title, String content, String category, Date date) {
         this.title = title;
         this.content = content;
@@ -27,7 +24,7 @@ public class Article {
         this.date = date;
     }
 
-    // Getters
+   
     public String getTitle() {
         return title;
     }
@@ -44,29 +41,47 @@ public class Article {
         return date;
     }
 
-    // Setters (اختياري إذا أردت التعديل لاحقًا)
-    public void setTitle(String title) {
+   public void setTitle(String title) {
+    if (title != null && title.trim().length() > 2) {
         this.title = title;
+    } else {
+        System.out.println("ERORR .....");
+    }
+}
+ public void setContent(String content) {
+    if (content == null || content.trim().isEmpty()) {
+        System.out.println("Erorr!");
+        return;
+    }
+    if (content.length() < 10) {
+        System.out.println("Erorr.");
+        return;
+    }
+    if (content.length() > 10000) {
+        System.out.println("ERorr.");
+        return;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    this.content = content;
+}
 
     public void setCategory(String category) {
         this.category = category;
     }
 
     public void setDate(Date date) {
+    if (date != null ) {
         this.date = date;
+    } else {
+        System.out.println("ERORR....");
     }
+}
 
-    // تمثيل المقالة على شكل نص
     @Override
     public String toString() {
-        return "📄 العنوان: " + title + "\n" +
-               "📂 التصنيف: " + category + "\n" +
-               "📅 التاريخ: " + date + "\n" +
-               "📝 المحتوى:\n" + content;
+        return " Title : " + title + "\n" +
+               "Category: " + category + "\n" +
+               "Date : " + date + "\n" +
+               "Content :" + content;
     }
 }

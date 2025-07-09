@@ -4,10 +4,16 @@
  */
 package utils;
 
-/**
- *
- * @author hp
- */
-public class TextUtils {
-    
+import models.Article;
+
+public class Node {
+    public Article article;
+    public Node next;
+
+    public Node(Article article) {
+        this.article = article;
+        this.next = null;
+    }
 }
+
+
