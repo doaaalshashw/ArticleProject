@@ -7,32 +7,39 @@ package utils;
 import models.Article;
 
 public class ArticleStack {
-    private Node top;  // يمثل قمة الستاك
 
+    // العقدة التي تمثل العنصر الأعلى في المكدس
+    private Node top;
+    private int size;
+
+    // البناء
     public ArticleStack() {
         this.top = null;
+        this.size = 0;
     }
 
-    //  push: إدخال عنصر إلى الستاك
-    public void push(Article a) {
-        Node newN = new Node(a);
-        newN.next = top;  // العقدة الجديدة تشير للعقدة التي كانت في الأعلى
-        top = newN;       // تصبح العقدة الجديدة هي الأعلى
+    // ➕ push: إضافة عنصر إلى الأعلى
+    public void push(Article article) {
+        Node newNode = new Node(article);
+        newNode.next = top;  // العقدة الجديدة تشير للعقدة الحالية في الأعلى
+        top = newNode;       // تصبح العقدة الجديدة هي الأعلى
+        size++;
     }
-    
-    
 
+    //  pop: حذف وإرجاع العنصر الأعلى
     public Article pop() {
         if (isEmpty()) {
-            System.out.println("Erorrُ");
+            System.out.println("Empty steck");
             return null;
         }
-        Article article = top.article;
-        top = top.next;  // نزّل المستوى إلى العقدة التالية
-        return article;
+
+        Article removed = top.article;
+        top = top.next;  // العنصر التالي يصبح الأعلى
+        size--;
+        return removed;
     }
 
-    // 👀 peek: عرض العنصر الأعلى بدون حذفه
+    //  peek: إرجاع العنصر الأعلى بدون حذفه
     public Article peek() {
         if (isEmpty()) {
             System.out.println("Empty steck");
@@ -46,16 +53,24 @@ public class ArticleStack {
         return top == null;
     }
 
-    // طباعة كل العناصر من الأعلى للأسفل
+    // إرجاع حجم الستاك
+    public int size() {
+        return size;
+    }
+
+    // طباعة كل العناصر
     public void printStack() {
         if (isEmpty()) {
             System.out.println("Empty steck");
             return;
         }
-        Node temp = top;
-        while (temp != null) {
-            System.out.println(temp.article);
-            temp = temp.next;
+
+        Node current = top;
+        while (current != null) {
+            System.out.println(current.article);
+            current = current.next;
         }
     }
 }
+
+

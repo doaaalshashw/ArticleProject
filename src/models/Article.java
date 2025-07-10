@@ -3,15 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package models;
-
-
-
-/**
- *
- * @author hp
- */
-
-
 public class Article {
     private String title;
     private String content;

@@ -9,6 +9,7 @@ import models.Article;
 public class Node {
     public Article article;
     public Node next;
+        //int count;
 
     public Node(Article article) {
         this.article = article;
